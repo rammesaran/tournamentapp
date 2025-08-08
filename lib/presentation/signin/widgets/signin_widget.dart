@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tournamentapp/application/auth/auth_bloc.dart';
+import 'package:tournamentapp/application/getplayer/getplayer_bloc.dart';
 import 'package:tournamentapp/domain/core/domain_utils.dart';
 import 'package:tournamentapp/presentation/core/theme_colors.dart';
 import 'package:tournamentapp/presentation/routes/router.gr.dart';
@@ -56,14 +57,18 @@ class _SigninWidgetState extends State<SigninWidget> {
       authState.map(
           initial: (_) {},
           signinSuccess: (state) async {
-            String? loginToken = state.appUser.resultData?.token;
-            final SharedPreferences prefs =
-                await SharedPreferences.getInstance();
-            prefs.setString('token', loginToken ?? "");
+            // String? loginToken = state.appUser.resultData?.token;
+            // final SharedPreferences prefs =
+            //     await SharedPreferences.getInstance();
+            // prefs.setString('token', loginToken ?? "");
 
-            String? result = prefs.getString('token');
-            print('signin successsss $result');
+            // String? result = prefs.getString('token');
+            // print('signin successsss $result');
+
             AutoRouter.of(context).replace(HomeRoute());
+
+            BlocProvider.of<GetplayerBloc>(context)
+                .add(GetplayerEvent.getplayer());
 
             //redirect to page
           },

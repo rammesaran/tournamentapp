@@ -36,12 +36,10 @@ class AuthRepository implements IAuthRepository {
           timeout: Duration(seconds: 60),
           onTimeout: (exception) => exception);
 
-      print('got response from login');
       print("the value of loginresponse is $loginResponse");
       final resulttoken = loginResponse.data['resultData'];
       Map data = jsonDecode(resulttoken);
       String output = data['Token'];
-      print("output is $output");
 
       _dioClient.setToken(token: output, username: userName);
 

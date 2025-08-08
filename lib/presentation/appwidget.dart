@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart' hide Router;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tournamentapp/application/auth/auth_bloc.dart';
+import 'package:tournamentapp/application/getplayer/getplayer_bloc.dart';
 import 'package:tournamentapp/presentation/app_scroll_behavior.dart';
 import 'package:tournamentapp/presentation/core/theme_colors.dart';
 import 'package:tournamentapp/presentation/injection.dart';
@@ -13,6 +14,9 @@ class AppWidget extends StatelessWidget {
     return MultiBlocProvider(providers: [
       BlocProvider(
         create: (context) => getIt<AuthBloc>(),
+      ),
+      BlocProvider(
+        create: (context) => getIt<GetplayerBloc>(),
       ),
     ], child: _buildMaterialApp(context));
   }

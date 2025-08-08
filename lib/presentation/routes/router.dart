@@ -18,5 +18,11 @@ class AppRouter extends $AppRouter {
         AutoRoute(
           page: HomeRoute.page,
         ),
+        AutoRoute(
+          page: PairsDisplayRoute.page,
+        ),
+        AutoRoute(
+          page: LiveMatchRoute.page,
+        ),
       ];
 }
